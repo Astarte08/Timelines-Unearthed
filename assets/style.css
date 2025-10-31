@@ -1,0 +1,591 @@
+/* === GLOBAL STYLES === */
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: #fdfaf6;
+  color: #333;
+}
+
+/* === HEADER / LOGO SECTION === */
+header {
+  width: 100%;
+  background-color: #4b3e2e;
+  text-align: center;
+  padding: 0;
+  position: relative;
+}
+
+header .logo {
+ max-width: calc(100% - 250px); /* leaves space for sidebar */
+ height: auto;
+ display: block;
+margin-left: 250px; /* aligns with sidebar */
+object-fit: cover;
+}
+
+/* === SIDEBAR NAVIGATION === */
+.sidebar {
+  width: 200px;
+  background: #4b3e2e;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav ul li {
+  margin: 12px 0;
+}
+
+.sidebar nav ul li a {
+  display: block;
+  background: #6b5b44;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.sidebar nav ul li a:hover {
+  background: #867559;
+}
+
+.sidebar nav ul li.active a {
+  background: #a89273;
+  font-weight: bold;
+}
+
+.toggle-btn {
+  background: #6b5b44;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  font-size: 18px;
+}
+
+.toggle-btn:hover {
+  background: #867559;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+  overflow: hidden;
+}
+
+.sidebar.collapsed nav ul li a {
+  text-align: center;
+  font-size: 10px 0;
+}
+
+.sidebar.collapsed nav ul li a::before {
+  font-size: 18px;
+  content: "•";
+  display: inline-block;
+  color:#fff;
+  margin: 0 auto;
+}
+
+/* === MAIN CONTENT AREA === */
+main {
+  margin-left: 270px; /* space for sidebar */
+  padding: 20px;
+}
+
+header h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 2em;
+  margin-bottom: 0;
+  color: #fff;
+}
+
+header p {
+  font-style: italic;
+  margin-top: 5px;
+  color: #eee;
+}
+
+/* === METHOD GRID === */
+.method-grid {
+  margin-top: 40px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.card {
+  width: 220px;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card span {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #4b3e2e;
+}
+
+/* === FOOTER === */
+footer {
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #666;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  text-align: center;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 900px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  main {
+    margin-left: 0;
+  }
+
+  .grid {
+    justify-content: center;
+  }
+}
+
+/* === EXISTING ILLUSTRATION STYLES === */
+/* Keeping your animations and panels */
+.stratigraphy-illustration,
+.chemical-illustration,
+.biostratigraphy-illustration,
+.faunal-illustration,
+.radiometric-illustration,
+.luminescence-illustration,
+.esr-illustration,
+.dendro-illustration,
+.magnetism-illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  gap: 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.stratigraphy-illustration video,
+.chemical-illustration video,
+.biostratigraphy-illustration video,
+.faunal-illustration video,
+.radiometric-illustration video,
+.luminescence-illustration video,
+.esr-illustration video,
+.dendro-illustration video,
+.magnetism-illustration video,
+.stratigraphy-illustration img,
+.chemical-illustration img,
+.biostratigraphy-illustration img,
+.faunal-illustration img,
+.radiometric-illustration img,
+.luminescence-illustration img,
+.esr-illustration img,
+.dendro-illustration img,
+.magnetism-illustration img {
+  width: 80%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  object-fit: contain;
+}
+
+
+.stratigraphy-illustration.animate,
+.chemical-illustration.animate,
+.biostratigraphy-illustration.animate,
+.faunal-illustration.animate,
+.radiometric-illustration.animate,
+.luminescence-illustration.animate,
+.esr-illustration.animate,
+.dendro-illustration.animate,
+.magnetism-illustration.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stratigraphy-illustration {
+  margin-left: 40px;
+  text-align: center;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.illustration.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.layer {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+.layer1 { background: #8B4513; }
+.layer2 { background: #A0522D; }
+.layer3 { background: #D2691E; }
+.layer4 { background: #DEB887; }
+
+/* chemical illustration */
+.chemical-illustration {
+  margin-left: 40px;
+  text-align: center;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.chemical-illustration.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bone {
+  background: #c2b280;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.arrow {
+  font-size: 2em;
+  color: #4b3e2e;
+}
+
+.label {
+  background: #eee;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/*biostratigraphy illustration*/
+.biostratigraphy-illustration {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.biostratigraphy-illustration.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fossil {
+  background: #dcdcdc;
+  padding: 10px;
+  border-left: 5px solid #4b3e2e;
+  font-weight: bold;
+}
+
+/*faunal illustration*/
+.faunal-illustration {
+  margin-left: 40px;
+  text-align: center;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.faunal-illustration.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site {
+  background: #f0e68c;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.arrow {
+  font-size: 2em;
+  color: #4b3e2e;
+}
+
+/*radiometric illustration*/
+.radiometric-illustration {
+  margin-left: 40px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.radiometric-illustration.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.decay-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.isotope, .product {
+  background: #b0c4de;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.arrow {
+  font-size: 1.5em;
+  color: #4b3e2e;
+}
+
+.timeline {
+  font-style: italic;
+  color: #666;
+}
+
+/*luminescence illustration*/
+.luminescence-illustration {
+  margin-left: 40px;
+  text-align: center;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.luminescence-illustration.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.grain {
+  background: #f5deb3;
+  padding: 15px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.stimulus {
+  background: #ffe4b5;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/*esr illustration*/
+.esr-illustration {
+  margin-left: 40px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.esr-illustration.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sample, .field, .response {
+  background: #e6e6fa;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+/*dendro illustration*/
+.dendro-illustration {
+  margin-left: 40px;
+  text-align: center;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.dendro-illustration.animate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ring {
+  position: absolute;
+  border: 2px solid #8B4513;
+  border-radius: 50%;
+}
+
+.ring1 { width: 40px; height: 40px; top: 80px; left: 80px; }
+.ring2 { width: 80px; height: 80px; top: 60px; left: 60px; }
+.ring3 { width: 120px; height: 120px; top: 40px; left: 40px; }
+.ring4 { width: 160px; height: 160px; top: 20px; left: 20px; }
+
+/*paleomagnetism illustration*/
+.magnetism-illustration {
+  display: flex;
+  gap: 10px;
+  margin-left: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.magnetism-illustration.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.polarity {
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.normal { background: #4B0082; }
+.reversed { background: #FF4500; }
+
+/* === LANDING PAGE === */
+.landing-page {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+}
+
+#bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.6);
+}
+
+.landing-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  animation: fadeIn 2s ease forwards;
+}
+
+.landing-logo {
+  max-width: 1000px;
+  width: 80%;
+  height: auto;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 1.5s ease;
+}
+
+.explore-btn {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.explore-btn:hover {
+  background: white;
+  color: #4b3e2e;
+}
+
+/* Fade in animations */
+body.loaded .landing-logo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.loaded .explore-btn {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Show method-specific banner */
+body.method-page header .page-banner {
+  display: block;
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+/* End of styles.css */
